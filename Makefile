@@ -9,7 +9,7 @@ RUN_FLAGS       	= -p 443:443 -p 8080:8080
 MOUNT_FLAGS				= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(CONT_KEY_PATH):ro
 
 IMAGE_NAME 				= server_image
-IMAGE_TAG  				= 0.1.0
+IMAGE_TAG  				= 0.2.0
 
 CONTAINER_NAME 		= server_container
 
