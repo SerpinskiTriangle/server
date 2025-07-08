@@ -1,44 +1,56 @@
 # makefile for docker automation
-CONT_CRT_PATH	= /etc/stunnel/cert.pem
-CONT_KEY_PATH	= /etc/stunnel/key.pem
+
+# configuration
+
+## general
+DOCKERFILE 				= Dockerfile
+
+BUILD_CONTEXT 		= .
+
+IMAGE_NAME 				= server_image
+IMAGE_TAG  				= 0.3.0
+
+CONTAINER_NAME 		= server_container
+
+## volume configuration
+CONT_CRT_PATH			= /etc/stunnel/cert.pem
+CONT_KEY_PATH			= /etc/stunnel/key.pem
 
 HOST_CRT_PATH			= $(shell readlink -f /etc/letsencrypt/live/ivan.xenbox.ru/fullchain.pem)
 HOST_KEY_PATH			= $(shell readlink -f /etc/letsencrypt/live/ivan.xenbox.ru/privkey.pem)
 
-RUN_FLAGS       	= -p 443:443 -p 8080:8080
-MOUNT_FLAGS				= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(CONT_KEY_PATH):ro
+## flags
+PORT_FLAGS       	= -p 443:443 -p 8080:8080
+VOLUME_FLAGS			= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(CONT_KEY_PATH):ro
 
-IMAGE_NAME 				= server_image
-IMAGE_TAG  				= 0.2.0
+#commands
 
-CONTAINER_NAME 		= server_container
-
-run: build
-	docker run $(RUN_FLAGS) $(MOUNT_FLAGS) --name $(CONTAINER_NAME) -d $(IMAGE_NAME):$(IMAGE_TAG)
-
-start:
-	docker run $(RUN_FLAGS) $(MOUNT_FLAGS) --name $(CONTAINER_NAME) -d $(IMAGE_NAME):$(IMAGE_TAG)
-
+## core commands
 build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) ./
+	$(SUDO) docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(DOCKERFILE) $(BUILD_CONTEXT) || true
+
+run:
+	$(SUDO) docker run --rm $(PORT_FLAGS) $(VOLUME_FLAGS) --name $(CONTAINER_NAME) -d $(IMAGE_NAME):$(IMAGE_TAG) || true
 
 stop:
-	docker kill $(CONTAINER_NAME)
+	$(SUDO) docker kill $(CONTAINER_NAME) || true
 
 clean:
-	docker rm $(CONTAINER_NAME)
-	docker rmi $(IMAGE_NAME):$(IMAGE_TAG)
+	$(SUDO) docker rm  -f $(CONTAINER_NAME)						|| true
+	$(SUDO) docker rmi -f $(IMAGE_NAME):$(IMAGE_TAG) 	|| true
 
+## iterative commands
 rerun: stop clean build run
 
+## utility commands
 ps:
-	docker ps
+	$(SUDO) docker ps
 
 psa:
-	docker ps -a
+	$(SUDO) docker ps -a
 
 ls:
-	docker images
+	$(SUDO) docker images
 
-shell:
-	docker exec -it $(CONTAINER_NAME) /bin/sh
+sh:
+	$(SUDO) docker exec -it $(CONTAINER_NAME) /bin/sh
