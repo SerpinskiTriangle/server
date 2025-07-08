@@ -1,0 +1,70 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Consolas', monospace;
+  background-color: #11111b;
+  color: #bac2de; /* Text color */
+  line-height: 1.6;
+}
+
+/* Header */
+.site-header {
+  background-color: #11111b;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #f38ba8;
+}
+
+.menu a {
+  margin-right: 1.5rem;
+  text-decoration: none;
+  color: #bac2de;
+  font-weight: bold;
+}
+
+.menu a:hover {
+  color: #89b4fa; /* Subtle hover color */
+}
+
+/* Hero Section */
+.hero {
+  background-color: #11111b;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+/* Gallery Section */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #f38ba8;
+  color: #11111b;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
