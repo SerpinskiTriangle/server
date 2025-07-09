@@ -1,94 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- Set character encoding for the document -->
-  <meta charset="UTF-8">
-  <!-- Configure the viewport for responsive design across devices -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Set the title of the web page, displayed in the browser tab -->
-  <title>HOLY SMOKES</title>
-
-  <!-- Internal CSS for styling the page -->
-  <style>
-    /* Apply styles to the entire body of the document */
-    body {
-      /* Set the background image to 'pony.jpg' */
-      background-image: url('images/pony.jpg');
-      /* Make the background image repeat to create a tiling effect */
-      background-repeat: repeat;
-      /* Ensure the body takes at least the full height of the viewport */
-      min-height: 100vh;
-      /* Remove default margin to ensure the background covers the entire screen */
-      margin: 0;
-      /* Use Flexbox for centering content vertically and horizontally */
-      display: flex;
-      /* Center content horizontally */
-      justify-content: center;
-      /* Center content vertically */
-      align-items: center;
-      /* Set font family for better readability */
-      font-family: 'Inter', sans-serif;
-      /* Set text color to white for contrast against the background */
-      color: white;
-      /* Add a subtle text shadow for better visibility */
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    }
-
-    /* Style for the main title on the page */
-    .main-title {
-      /* Set a large font size for the title */
-      font-size: 8rem; /* Adjust as needed for responsiveness */
-      /* Make the text bold */
-      font-weight: bold;
-      /* Ensure text does not wrap */
-      white-space: nowrap;
-      /* Add some padding around the title */
-      padding: 20px;
-      /* Apply a slightly rounded border */
-      border-radius: 15px;
-      /* Add a background color with some transparency */
-      background-color: rgba(0, 0, 0, 0.5);
-      /* Add a box shadow for depth */
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-      /* Center the text within the title element */
-      text-align: center;
-    }
-
-    /* Responsive adjustments for smaller screens */
-    @media (max-width: 768px) {
-      .main-title {
-        /* Reduce font size for smaller screens */
-        font-size: 4rem;
-        /* Adjust padding */
-        padding: 15px;
-      }
-    }
-
-    /* Responsive adjustments for very small screens */
-    @media (max-width: 480px) {
-      .main-title {
-        /* Further reduce font size for mobile */
-        font-size: 2.5rem;
-        /* Adjust padding */
-        padding: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Audio element for background music -->
-  <!-- The 'autoplay' attribute starts the audio as soon as the page loads -->
-  <!-- The 'loop' attribute makes the audio play continuously -->
-  <!-- The 'src' attribute specifies the path to the audio file -->
-  <audio src="images/surprised.mp3" autoplay loop></audio>
-
-  <!-- Main content container for the title -->
-  <!-- This div is used to center the title using Flexbox properties on the body -->
-  <div class="main-title">
-    <!-- Display the main title with oil drum emojis -->
-    <!-- The emojis are Unicode characters for visual effect -->
-    🛢️🛢️ OIL 🛢️🛢️
-  </div>
-
-</body>
+  <head>
+    <!-- Set character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Configure the viewport for responsive design across devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the web page, displayed in the browser tab -->
+    <title>HOLY SMOKES</title>
+    <!-- Link to the external stylesheet -->
+    <!-- This line tells the browser to load and apply styles from 'styles.css' -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <!-- Audio element for background music -->
+    <!-- The 'autoplay' attribute starts the audio as soon as the page loads -->
+    <!-- The 'loop' attribute makes the audio play continuously -->
+    <!-- The 'src' attribute specifies the path to the audio file -->
+    <audio src="images/surprised.mp3" autoplay loop></audio>
+    <!-- Main content container for the title -->
+    <!-- This div is used to center the title using Flexbox properties defined in styles.css -->
+    <div class="main-title">
+      <!-- Display the main title with oil drum emojis -->
+      <!-- The emojis are Unicode characters for visual effect -->
+      🛢️🛢️ OIL 🛢️🛢️
+    </div>
+  </body>
 </html>
