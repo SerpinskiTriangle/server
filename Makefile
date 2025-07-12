@@ -27,30 +27,30 @@ VOLUME_FLAGS			= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(C
 
 ## core commands
 build:
-	$(SUDO) docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(DOCKERFILE) $(BUILD_CONTEXT) || true
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(DOCKERFILE) $(BUILD_CONTEXT) || true
 
 run:
-	$(SUDO) docker run --rm $(PORT_FLAGS) $(VOLUME_FLAGS) --name $(CONTAINER_NAME) -d $(IMAGE_NAME):$(IMAGE_TAG) || true
+	docker run --rm $(PORT_FLAGS) $(VOLUME_FLAGS) --name $(CONTAINER_NAME) -d $(IMAGE_NAME):$(IMAGE_TAG) || true
 
 stop:
-	$(SUDO) docker kill $(CONTAINER_NAME) || true
+	docker kill $(CONTAINER_NAME) || true
 
 clean:
-	$(SUDO) docker rm  -f $(CONTAINER_NAME)						|| true
-	$(SUDO) docker rmi -f $(IMAGE_NAME):$(IMAGE_TAG) 	|| true
+	docker rm  -f $(CONTAINER_NAME)						|| true
+	docker rmi -f $(IMAGE_NAME):$(IMAGE_TAG) 	|| true
 
 ## iterative commands
 rerun: stop clean build run
 
 ## utility commands
 ps:
-	$(SUDO) docker ps
+	docker ps
 
 psa:
-	$(SUDO) docker ps -a
+	docker ps -a
 
 ls:
-	$(SUDO) docker images
+	docker images
 
 sh:
-	$(SUDO) docker exec -it $(CONTAINER_NAME) /bin/sh
+	docker exec -it $(CONTAINER_NAME) /bin/sh
