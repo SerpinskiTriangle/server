@@ -1,70 +1,63 @@
-/* Base Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Apply styles to the entire body of the document */
 body {
-  font-family: 'Consolas', monospace;
-  background-color: #11111b;
-  color: #bac2de; /* Text color */
-  line-height: 1.6;
+  /* Set the background image to 'pony.jpg' */
+  background-image: url('images/pony.jpg');
+  /* Make the background image repeat to create a tiling effect */
+  background-repeat: repeat;
+  /* Ensure the body takes at least the full height of the viewport */
+  min-height: 100vh;
+  /* Remove default margin to ensure the background covers the entire screen */
+  margin: 0;
+  /* Use Flexbox for centering content vertically and horizontally */
+  display: flex;
+  /* Center content horizontally */
+  justify-content: center;
+  /* Center content vertically */
+  align-items: center;
+  /* Set font family for better readability */
+  font-family: 'Inter', sans-serif;
+  /* Set text color to white for contrast against the background */
+  color: white;
+  /* Add a subtle text shadow for better visibility */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* Header */
-.site-header {
-  background-color: #11111b;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #f38ba8;
-}
-
-.menu a {
-  margin-right: 1.5rem;
-  text-decoration: none;
-  color: #bac2de;
+/* Style for the main title on the page */
+.main-title {
+  /* Set a large font size for the title */
+  font-size: 8rem; /* Adjust as needed for responsiveness */
+  /* Make the text bold */
   font-weight: bold;
-}
-
-.menu a:hover {
-  color: #89b4fa; /* Subtle hover color */
-}
-
-/* Hero Section */
-.hero {
-  background-color: #11111b;
-  padding: 4rem 2rem;
+  /* Ensure text does not wrap */
+  white-space: nowrap;
+  /* Add some padding around the title */
+  padding: 20px;
+  /* Apply a slightly rounded border */
+  border-radius: 15px;
+  /* Add a background color with some transparency */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Add a box shadow for depth */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  /* Center the text within the title element */
   text-align: center;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .main-title {
+    /* Reduce font size for smaller screens */
+    font-size: 4rem;
+    /* Adjust padding */
+    padding: 15px;
+  }
 }
 
-.hero p {
-  font-size: 1.2rem;
-}
-
-/* Gallery Section */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 2rem;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Footer */
-.site-footer {
-  background-color: #f38ba8;
-  color: #11111b;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .main-title {
+    /* Further reduce font size for mobile */
+    font-size: 2.5rem;
+    /* Adjust padding */
+    padding: 10px;
+  }
 }
