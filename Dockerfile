@@ -1,4 +1,6 @@
-FROM nginx:alpine
+FROM alpine:latest
+
+RUN apk add nginx
 
 RUN mkdir -p /usr/share/nginx/html/images/
 
@@ -7,6 +9,6 @@ COPY docs/images/* /usr/share/nginx/html/images/
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
-CMD ["sleep", "infinity"]
+CMD sh -c "nginx & sleep infinity"
 
 EXPOSE 443
