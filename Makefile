@@ -8,7 +8,7 @@ DOCKERFILE 				= Dockerfile
 BUILD_CONTEXT 		= .
 
 IMAGE_NAME 				= server_image
-IMAGE_TAG  				= 0.3.0
+IMAGE_TAG  				= 0.3.0 #last commit before moving to nginx
 
 CONTAINER_NAME 		= server_container
 
