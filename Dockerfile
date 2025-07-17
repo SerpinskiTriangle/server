@@ -1,15 +1,12 @@
-FROM alpine:latest
+FROM nginx:alpine
 
-RUN apk add busybox-extras stunnel
+RUN mkdir -p /usr/share/nginx/html/images/
 
-RUN mkdir -p /var/www
-RUN mkdir -p /var/ww/images
+COPY docs/index.html docs/styles.css /usr/share/nginx/html/
+COPY docs/images/* /usr/share/nginx/html/images/
 
-COPY docs/index.html docs/styles.css /var/www/
-COPY docs/images/* /var/www/images/
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY stunnel.conf /etc/stunnel
+CMD ["sleep", "infinity"]
 
 EXPOSE 443
-
-CMD sh -c "httpd -f -p 8080 -h /var/www & stunnel /etc/stunnel/stunnel.conf & wait -n"

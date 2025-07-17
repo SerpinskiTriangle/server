@@ -13,14 +13,14 @@ IMAGE_TAG  				= 0.3.0 #last commit before moving to nginx
 CONTAINER_NAME 		= server_container
 
 ## volume configuration
-CONT_CRT_PATH			= /etc/stunnel/cert.pem
-CONT_KEY_PATH			= /etc/stunnel/key.pem
+CONT_CRT_PATH			= /etc/nginx/ssl/fullchain.pem
+CONT_KEY_PATH			= /etc/nginx/ssl/privkey.pem
 
 HOST_CRT_PATH			= $(shell readlink -f /etc/letsencrypt/live/ivan.xenbox.ru/fullchain.pem)
 HOST_KEY_PATH			= $(shell readlink -f /etc/letsencrypt/live/ivan.xenbox.ru/privkey.pem)
 
 ## flags
-PORT_FLAGS       	= -p 443:443 -p 8080:8080
+PORT_FLAGS       	= -p 443:443
 VOLUME_FLAGS			= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(CONT_KEY_PATH):ro
 
 #commands
