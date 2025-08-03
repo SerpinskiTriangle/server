@@ -5,16 +5,18 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #11111b;
+}
+
 body {
   font-family: 'Consolas', monospace;
-  background-color: #11111b;
   color: #bac2de; /* Text color */
   line-height: 1.6;
 }
 
 /* Header */
 .site-header {
-  background-color: #11111b;
   padding: 1rem 2rem;
   border-bottom: 1px solid #f38ba8;
 }
@@ -32,7 +34,6 @@ body {
 
 /* Hero Section */
 .hero {
-  background-color: #11111b;
   padding: 4rem 2rem;
   text-align: center;
 }
@@ -63,7 +64,6 @@ body {
 /* Footer */
 .site-footer {
   background-color: #f38ba8;
-  color: #11111b;
   text-align: center;
   padding: 1rem 0;
   margin-top: 2rem;
