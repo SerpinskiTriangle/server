@@ -6,9 +6,10 @@
 DOCKERFILE 				= Dockerfile
 
 BUILD_CONTEXT 		= .
+SOURCE_DIR				= docs/src
 
 IMAGE_NAME 				= server_image
-IMAGE_TAG  				= 0.4.1 #last commit before moving to nginx
+IMAGE_TAG  				= 0.4.2
 
 CONTAINER_NAME 		= server_container
 
@@ -27,6 +28,7 @@ VOLUME_FLAGS			= -v $(HOST_CRT_PATH):$(CONT_CRT_PATH):ro -v $(HOST_KEY_PATH):$(C
 
 ## core commands
 build:
+	make --directory=$(BUILD_CONTEXT)/$(SOURCE_DIR)/ build
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -f $(DOCKERFILE) $(BUILD_CONTEXT) || true
 
 run:
@@ -36,6 +38,7 @@ stop:
 	docker kill $(CONTAINER_NAME) || true
 
 clean:
+	rm $(BUILD_CONTEXT)/$(SOURCE_DIR)/sim.js $(BUILD_CONTEXT)/$(SOURCE_DIR)/sim.wasm || true
 	docker rm  -f $(CONTAINER_NAME)						|| true
 	docker rmi -f $(IMAGE_NAME):$(IMAGE_TAG) 	|| true
 
